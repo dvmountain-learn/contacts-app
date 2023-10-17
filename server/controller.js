@@ -30,8 +30,15 @@ module.exports = {
 
     createContact: (req, res) => {
         console.log(req.body)
+        const { name, tel} = req.body
         try {
-            
+            const obj = {
+                id: autoId,
+                name: name,
+                tel: tel
+            }
+            database.push(obj)
+            res.status(200).send(database)
         } catch (err) {
             res.status(400).send(err)
         }

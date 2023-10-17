@@ -48,16 +48,21 @@ function createContact(event) {
         name: name.value,
         tel: tel.value,
     }
+    console.log(obj)
     axios.post(`/api/contacts`, obj)
         .then((res) => {
-            contactItem.remove()
             let contacts = res.data
-            console.log(contacts)
             displayContacts(contacts)
+            clearForm()
         })
         .catch((error) => {
             console.log(error)
         })
+}
+
+function clearForm() {
+    name.value = ''
+    tel.value = ''
 }
 saveBtn.addEventListener('click', createContact);
 
