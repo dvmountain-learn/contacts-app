@@ -42,5 +42,24 @@ function getContacts() {
         })
 }
 
+function createContact(event) {
+    event.preventDefault();
+    const obj = {
+        name: name.value,
+        tel: tel.value,
+    }
+    axios.post(`/api/contacts`, obj)
+        .then((res) => {
+            contactItem.remove()
+            let contacts = res.data
+            console.log(contacts)
+            displayContacts(contacts)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+}
+saveBtn.addEventListener('click', createContact);
+
 // Load contacts
 getContacts()
