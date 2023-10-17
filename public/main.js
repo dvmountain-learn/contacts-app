@@ -68,14 +68,14 @@ saveBtn.addEventListener('click', createContact);
 
 function updateContact(id) {
     let isConfirm = confirm('Are you sure you want to update this record?')
-    if (!isConfirm) {
+    if (isConfirm) {
 
     }
 }
 
 function deleteContact(id) {
     let isConfirm = confirm('Are you sure you want to delete this record?')
-    if (!isConfirm) {
+    if (isConfirm) {
         axios.delete(`/api/contacts/${id}`)
         .then((res) => {
             let contacts = res.data
