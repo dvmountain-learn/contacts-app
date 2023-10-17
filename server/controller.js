@@ -1,4 +1,11 @@
 
+var Rollbar = require('rollbar')
+var rollbar = new Rollbar({
+  accessToken: '82bd3f1c606b4d3289c664b6f31b6ce2',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+})
+
 const database = [
     {
         id: 1,
@@ -22,8 +29,10 @@ const autoId = database.length + 1
 module.exports = {
     getContacts: (req, res) => {
         try {
+            rollbar.log('Welcome to visit our website.')
             res.status(200).send(database)
         } catch (err) {
+            rollbar.error(err)
             res.status(400).send(err)
         }
     },
@@ -37,9 +46,11 @@ module.exports = {
                 name: name,
                 tel: tel
             }
+            rollbar.info(obj)
             database.push(obj)
             res.status(200).send(database)
         } catch (err) {
+            rollbar.error(err)
             res.status(400).send(err)
         }
     }
