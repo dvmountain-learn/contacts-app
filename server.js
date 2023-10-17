@@ -8,9 +8,11 @@ app.use(cors())
 
 app.use(express.static(path.join(__dirname + '/public')))
 
-const { getContacts } = require('./server/controller.js')
+const { getContacts, createContact } = require('./server/controller.js')
 
 app.get('/api/contacts', getContacts)
+
+app.post('/api/contacts', createContact)
 
 app.listen(4040, () => {
     console.log('Server running on port 4040')
