@@ -26,5 +26,14 @@ module.exports = {
         } catch (err) {
             res.status(400).send(err)
         }
+    },
+
+    createContact: (req, res) => {
+        console.log(req.body)
+        try {
+
+        } catch (err) {
+            res.status(400).send(err)
+        }
     }
 }
