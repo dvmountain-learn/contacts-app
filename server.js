@@ -12,6 +12,6 @@ const { getContacts } = require('./server/controller.js')
 
 app.get('/api/contacts', getContacts)
 
-app.listen(4000, () => {
-    console.log('Server running on port 4000')
+app.listen(4040, () => {
+    console.log('Server running on port 4040')
 })
