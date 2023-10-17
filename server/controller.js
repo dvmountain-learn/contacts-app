@@ -29,16 +29,17 @@ const autoId = database.length + 1
 module.exports = {
     getContacts: (req, res) => {
         try {
+            // print;
             rollbar.log('Welcome to visit our website.')
             res.status(200).send(database)
         } catch (err) {
-            rollbar.error(err)
+            rollbar.error(`Couldn't load contact information: ${err}`)
             res.status(400).send(err)
         }
     },
 
     createContact: (req, res) => {
-        console.log(req.body)
+
         const { name, tel} = req.body
         try {
             const obj = {
@@ -46,8 +47,24 @@ module.exports = {
                 name: name,
                 tel: tel
             }
-            rollbar.info(obj)
+            rollbar.warning(obj)
             database.push(obj)
+            res.status(200).send(database)
+        } catch (err) {
+            rollbar.error(err)
+            res.status(400).send(err)
+        }
+    },
+
+    updateContact: (req, res) => {
+        console.log(req.body)
+    },
+
+    deleteContact: (req, res) => {
+        try { 
+            const index = database.findIndex(item => item.id === +req.params.id)
+            database.splice(index, 1)
+            rollbar.critical('Are ready to delete contact at ' + index)
             res.status(200).send(database)
         } catch (err) {
             rollbar.error(err)

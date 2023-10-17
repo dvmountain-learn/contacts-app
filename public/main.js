@@ -19,8 +19,8 @@ function displayContacts(contacts) {
         <td>&nbsp;&nbsp;${item.name}</td>
         <td style="text-align: center">${item.tel}</td>
         <td style="text-align: center; width: 15%;">
-            <button id="edit-btn" onclick="updateProductInStock(${item.id})"><i class="material-icons edit">edit</i></button>
-            <button id="delete-btn" onclick="deleteProductInStock(${item.id})"><i class="material-icons delete">delete</i></button>
+            <button id="edit-btn" onclick="updateContact(${item.id})"><i class="material-icons edit">edit</i></button>
+            <button id="delete-btn" onclick="deleteContact(${item.id})"><i class="material-icons delete">delete</i></button>
         </td>
         </tr>`
     }
@@ -65,6 +65,27 @@ function clearForm() {
     tel.value = ''
 }
 saveBtn.addEventListener('click', createContact);
+
+function updateContact(id) {
+    let isConfirm = confirm('Are you sure you want to update this record?')
+    if (!isConfirm) {
+
+    }
+}
+
+function deleteContact(id) {
+    let isConfirm = confirm('Are you sure you want to delete this record?')
+    if (!isConfirm) {
+        axios.delete(`/api/contacts/${id}`)
+        .then((res) => {
+            let contacts = res.data
+            displayContacts(contacts)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }
+}   
 
 // Load contacts
 getContacts()
