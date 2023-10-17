@@ -1,0 +1,67 @@
+body {
+    margin: 0 auto;
+}
+
+.container {
+    width: 90%;
+    margin-top: 50px;
+}
+
+#side-form-contact {
+    width: 25%;
+    height: 100%;
+    background: rgb(226, 236, 240);
+    border-radius: 10px;
+    float: left;
+    margin-left: 50px;
+}
+
+#form-contact {
+    margin: 25px;
+}
+
+input {
+    width: 75%;
+    height: 25px;
+}
+
+#save-btn {
+    width: 100px;
+    height: 35px;
+}
+
+
+#side-list {
+    width: 65%;
+    height: 100%;
+    background: rgb(246, 246, 246);
+    border-radius: 10px;
+    margin-left: 5%;
+    float: left;
+}
+
+#clear {
+    clear: both;
+}
+
+.contact-item {
+    width: 100%;
+    margin: 20px;
+}
+
+#contact-title {
+    margin-left: 20px;
+}
+
+table {
+    width: 96%;
+    text-align: left;
+    padding: 5px;
+    /* border: solid black .5px; */
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    height: 33px;
+}
